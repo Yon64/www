@@ -1,0 +1,231 @@
+:root {
+	--duel_left_bg_color: #124C90;
+	--duel_right_bg_color: #FF3E4B;
+}
+
+body
+{
+	background-color:white;
+	padding:0px;
+	margin:0px;
+}
+
+#container_title
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+
+	font-family: Calibri;
+	font-size:32px;
+	font-weight:bold;
+	color:white;
+	text-align:center;
+
+	background-color:#024089;
+	background-image: url("../img/logo-ffs.svg");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 64px 64px;
+}
+
+#row_marquee2 {
+  overflow: hidden;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  display: flex;
+}
+
+#label_marquee {
+	padding:0px;
+	background-position: right,center;
+	background-image: url('../img/32x32_megaphone.png');
+	background-repeat: no-repeat;
+}
+
+/* Make it a marquee */
+#marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 7s linear infinite;
+	color: white;
+	font-weight: bold;
+	font-size:24px;
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+#container_oncourse
+{
+	position:absolute;
+	top:5px;
+	left:5px;
+}
+
+#container_duel div.tour_label
+{
+	border:solid;
+	padding:0px;
+	border-width:1px;
+	background-color:rgb(2,64,137);
+	border-color: gray;
+	text-align:center;
+	font-family: Calibri;
+	font-size:18px;
+	color:white;
+} 
+
+#container_duel div.duel
+{
+	position:absolute;
+	border:none;
+	border-width:1px;
+	background-color:white;
+	border-color: gray;
+} 
+
+#container_duel div.duel table tr td.label_duel
+{
+	width:5%;
+	height:100%;
+	background-color:rgb(2,64,137);
+	text-align:center;
+	color:white;
+}
+
+#container_duel div.duel.selection table tr td.label_duel
+{
+	color:rgb(2,64,137);
+	background-color:yellow;
+	font-weight:bold;
+}
+
+#container_duel div.duel table tr td.label
+{
+	height:100%;
+	background-color:rgb(2,64,137);
+	text-align:center;
+	color:white;
+	padding:1px;
+	margin:1px;
+	font-size:11px;
+	border:solid;
+	border-width:1px;
+}
+
+#container_duel div.duel table tr td.couloir
+{
+	width:5%;
+	background-color:black;
+	color:yellow;
+	text-align:center;
+}
+
+#container_duel div.duel table tr td.dossard
+{
+	width:10%;
+	background-color:white;
+	color:black;
+	text-align:center;
+	border:solid;
+	border-width:1px;
+	padding:1px;
+	margin:1px;
+	font-size:11px;
+}
+
+#container_duel div.duel table tr td.identite
+{
+	width:40%;
+	background-color:white;
+	color:black;
+	text-align:left;
+	font-size:10px;
+	border:solid;
+	border-width:1px;
+	padding:1px;
+	margin:1px;
+}
+
+#container_duel div.duel table tr td.club
+{
+	width:30%;
+	background-color:white;
+	color:black;
+	text-align:left;
+	font-size:9px;
+	border:solid;
+	border-width:1px;
+	padding:1px;
+	margin:1px;
+}
+
+#container_duel div.duel table tr td.tps
+{
+	width:10%;
+	background-color:rgb(212,2,29);
+	color:white;
+	text-align:right;
+	font-size:12px;
+	font-weight:bold;
+	border:solid;
+	border-width:1px;
+	padding:1px;
+	margin:1px;
+	font-size:14px;
+}
+
+#container_duel div.duel.selection_neutralise
+{
+	border:solid;
+	border-width:9px;
+	border-color: green yellow;
+}
+
+#container_duel div.dossard
+{
+	display:inline-block;
+	
+	color:white;
+	text-align:right;
+	vertical-align: top;
+	font-family: Calibri;
+	font-size:24px;
+	font-weight:bold;
+}
+
+#container_duel div.identite
+{
+	display:inline-block;
+	
+	color:white;
+	text-align:center;
+	font-family: Calibri;
+	font-size:12px;
+	font-weight:bold;
+}
+
+#container_duel div.clt
+{
+	display:inline-block;
+
+	text-align:right;
+	margin-top:5px;
+	vertical-align: top;
+
+	font-family: Calibri;
+	font-size:14px;
+	font-weight:bold;
+	color:white;
+}

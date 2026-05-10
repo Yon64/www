@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<title>KO-Sprint</title>
+
+	<link rel="shortcut icon" href="./16x16_ffs.png" />
+	<link rel="icon" href="./16x16_ffs.png"/>
+	
+	<link href="./css/live_ko.css?v5" rel="stylesheet">
+</head>
+
+<body> 
+	<div id="container_title"></div>
+
+	<div class="container-fluid">
+		<br>
+		<div class="row" id="row_marquee">
+			<div class="col-2" id="label_marquee">&nbsp;</div>
+			<div class="col-10" id="marquee"><span id="msg">&nbsp;</span></div>
+		</div>
+	</div>
+
+	<div id="container_duel"></div>
+
+	<script src="../bootstrap/v5.3.3/js/bootstrap.min.js"></script>
+	<script src="../adv/ws.js"></script>
+	<script src="../adv/ws_params.js"></script>
+	<script src="../adv/adv.js"></script>
+	<script src="../adv/ski.js?v2"></script>
+	
+	<script src="./js/live_ko.js?v2"></script>
+	
+	<script>document.addEventListener('DOMContentLoaded', function() {Init();})</script>
+</body>
+</html>

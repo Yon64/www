@@ -1,0 +1,177 @@
+body
+{
+	background-color:pink;
+	padding:0px;
+	margin:0px;
+}
+
+/****************** block_duel *********************/
+#block_title
+{
+	position:absolute;
+	top:610px;
+
+	left:788px;
+	width:828px;
+	height:45px;
+
+	font-family: Calibri;
+	font-size:42px;
+	font-weight:bold;
+	color:black;
+	text-align:center;
+	
+	background-image: url("../img/racer_title_cc.png");
+	background-repeat: no-repeat;	
+}
+
+#block_duel6
+{
+	position:absolute;
+	top:860px;
+}
+
+#block_duel5
+{
+	position:absolute;
+	top:820px;
+}
+
+#block_duel4
+{
+	position:absolute;
+	top:780px;
+}
+
+#block_duel3
+{
+	position:absolute;
+	top:740px;
+}
+
+#block_duel2
+{
+	position:absolute;
+	top:700px;
+}
+
+#block_duel1
+{
+	position:absolute;
+	top:660px;
+}
+
+.duel
+{
+	left:588px;
+	width:1300px;
+	height:45px;
+}
+
+.duel .logo_alpina2
+{
+	position:absolute;
+
+	left:0px;
+	top:0px;
+	width:168px;
+	height:100%;
+
+	background-image: url("../img/racer_logo_alpina.png");
+	background-repeat: no-repeat;	
+	padding-top:1px;
+	padding-left:20px;
+}
+
+.duel .logo_finish
+{
+	position:absolute;
+
+	left:200px;
+	top:0px;
+	width:988px;
+	height:100%;
+
+	background-image: url("../img/racer_finish_cc.png");
+	background-repeat: no-repeat;	
+}
+
+.duel .bib
+{
+	position: absolute;
+
+	left:210px;
+	top:0px;
+	width:35px;
+
+	font-family: Calibri;
+	font-size:28px;
+	font-weight:bold;
+	color:white;
+	text-align:center;
+}
+
+.duel .identity
+{
+	position: absolute;
+
+	left:270px;
+	top:0px;
+
+	font-family: Calibri;
+	font-size:28px;
+	font-weight:bold;
+	color:white;
+}
+
+.duel .nation
+{
+	position: absolute;
+
+	left:710px;
+	top:0px;
+
+	font-family: Calibri;
+	font-size:28px;
+	font-weight:bold;
+	color:white;
+}
+
+.duel .img_nation
+{
+	position: absolute;
+
+	left:770px;
+	top:4px;
+}
+
+.duel .rank
+{
+	position: absolute;
+
+	left:818px;
+	top:0px;
+	width:38px;
+
+	font-family: Calibri;
+	font-size:28px;
+	font-weight:bold;
+	color:black;
+	text-align:right;
+}
+
+.duel .info
+{
+	position: absolute;
+
+	left:875px;
+	top:0px;
+	width:130px;
+
+	font-family: Calibri;
+	font-size:28px;
+	font-weight:bold;
+	color:white;
+	text-align:center;
+}
+

@@ -1,0 +1,33 @@
+body
+{
+	background-color:white;
+	padding:0px;
+	margin:0px;
+}
+
+#container_title
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+
+	font-family: Calibri;
+	font-size:32px;
+	font-weight:bold;
+	color:white;
+	text-align:center;
+
+	background-color:#024089;
+	background-image: url("../img/logo-ffs.svg");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 64px 64px;
+}
+
+#container_oncourse
+{
+	position:absolute;
+	top:5px;
+	left:5px;
+}

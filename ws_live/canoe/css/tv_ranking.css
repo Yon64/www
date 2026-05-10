@@ -1,0 +1,546 @@
+:root {
+	--font-ffck: 'Calibri','Carlito';
+	--block-opacity: 0.9;  /** règlage de la transparence des images   **/
+	
+	--color-dark-navy: #1a1a66;
+	--color-bright-blue: #007bff;
+	--color-grad-start: #88c9f9;
+	--color-grad-end: #42a5f5;
+	--color-line: rgba(26, 26, 102, 0.4);
+}
+
+/* Apparition de la gauche */
+@keyframes apparitionG {
+	from {
+		opacity: 0;
+		transform: translateX(-300px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Apparition de la droite */
+@keyframes apparitionD {
+	from {
+		opacity: 0;
+		transform: translateX(300px); 
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Apparition fondu */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/**********************************/
+body
+{
+	overflow-x: hidden;
+	background-color:transparent; 
+	padding:0px;
+	margin:0px;
+	/* animation: apparitionD 0.7s ease-out; */
+	font-family: var(--font-ffck);
+}
+
+/* Background Shapes Implementation */
+body::before {
+    content: "";
+    position: fixed;
+    top: 140px;
+    left: 350px;
+    width: 1150px;
+    height: 720px;
+    background: linear-gradient(to bottom, var(--color-grad-start), var(--color-grad-end));
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: -5;
+    border-radius: 4px;
+}
+
+/* Horizontal Lines Overlay */
+body::after {
+    content: "";
+    position: fixed;
+    top: 220px;
+    left: 400px;
+    width: 1050px;
+    height: 601px; /* 10 rows * 60px + 1px for last line */
+    background: repeating-linear-gradient(
+        var(--color-line),
+        var(--color-line) 2px,
+        transparent 2px,
+        transparent 60px
+    );
+    z-index: -4;
+    pointer-events: none;
+}
+
+/* Header Parallelogram (Left - Dark Navy) */
+#head::before {
+    content: "";
+    position: absolute;
+    top: 80px;
+    left: 165px;
+    width: 1000px;
+    height: 80px;
+    background: var(--color-dark-navy);
+    transform: skewX(-30deg);
+    z-index: -3;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Header Parallelogram (Right - Bright Blue) */
+#head::after {
+    content: "";
+    position: absolute;
+    top: 115px;
+    left: 1050px;
+    width: 580px;
+    height: 55px;
+    background: var(--color-bright-blue);
+    transform: skewX(-30deg);
+    z-index: -2;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Footer Parallelogram (Bottom Right - Dark Navy) */
+#block_ranking::after {
+    content: "";
+    position: absolute;
+    top: 685px;
+    left: 1080px;
+    width: 600px;
+    height: 65px;
+    background: var(--color-dark-navy);
+    transform: skewX(-30deg);
+    z-index: -3;
+    box-shadow: -5px -5px 15px rgba(0,0,0,0.3);
+}
+
+#head .picto {
+    width: 100%;
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    position: absolute;
+    top: 836px;
+	right: 810px;
+}
+#head .picto.sla {
+    background-image: url("../img/FFCK_Icon_Slalom.png");
+}
+#head .picto.des {
+    background-image: url("../img/FFCK_Icon_Descente.png");
+}
+#head .picto.ocr {
+    background-image: url("../img/FFCK_Icon_Oceanracing.png");
+}
+#head .picto.mar {
+    background-image: url("../img/FFCK_Icon_Marathon.png");
+}
+
+/*
+#head .logoFFCK
+{
+	width:250px;
+	height: 140px;
+	background-image: url("../img/FFCK_550x400.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	left: 15px;
+	top:20px;	
+	
+	background-color: white;
+	opacity: var(--block-opacity);
+	padding: 0.5vw;             
+    border-radius: 0.5vw;        
+
+}
+*/
+
+/* 
+#head .logo1
+{
+	width: 1000px;
+	height: 130px;
+	background-image: url("../img/Partenaires/Run1.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	left: 30px;
+	top: 930px;
+	
+	background-color: transparent;
+	padding: 0.5vw;              
+    border-radius: 0.5vw;
+	
+}
+*/
+
+/*
+#head .logo2
+{
+	width:200px;
+	height: 150px;
+	background-image: url("../img/Partenaires/Image_ICF.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+	left: 15px;
+	top: 160px;
+	padding: 0.5vw;
+	border-radius: 0.5vw;
+
+}
+*/
+
+#head .name {
+    position: absolute;
+	font-family: var(--font-ffck);
+    left: 345px;
+    width: 640px;
+    top: 86px;
+    font-size: 34pt;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+	line-height: 70px;
+}
+
+#head .place
+{
+	display:none;
+}
+
+#head .title
+{
+	position: absolute;
+	font-family: var(--font-ffck);
+	left:1025px;
+	width:520px;
+	top:118px;
+	font-style: italic;
+	font-size:30pt;
+	color:rgb(0,27,90);
+	font-weight:bold;
+	text-align:center;
+	line-height: 50px;
+}
+
+#head .categ
+{
+	position: absolute;
+	font-family: var(--font-ffck);
+	font-style: italic;
+	left:1220px;
+	width:445px;
+	top:855px;
+	font-size:28pt;
+	color:white;
+	font-weight:bold;
+	text-align:center;
+	line-height: 55px;
+}
+
+#head .label_pena
+{
+	position: absolute;
+	font-family: var(--font-ffck);
+
+	left:1200px;
+	width:60px;
+	height:62px;
+	top:175px;
+	font-size:24pt;
+	font-style:italic;
+	color:rgb(0,27,90);
+	font-weight:bold;
+	text-align:right;
+	padding-top:0px;
+}
+
+#head .label_time
+{
+	position: absolute;
+	font-family: var(--font-ffck);
+
+	left:1310px;
+	width:60px;
+	height:62px;
+	top:175px;
+	font-size:24pt;
+	color:rgb(0,27,90);
+	font-weight:bold;
+	text-align:right;
+	padding-top:0px;
+}
+
+#head .page_counter
+{
+	position: absolute;
+	font-family: var(--font-ffck);
+	left:1400px;
+	top:175px;
+	font-size:24pt;
+	color:rgb(0,27,90);
+	font-weight:bold;
+	text-align:left;
+}
+
+#block_ranking
+{
+	position: absolute;
+	font-family: var(--font-ffck);
+	left:0px;
+	top:160px;
+	width:100%;
+}	
+
+#block_ranking .label_rank
+{
+	display:none;
+}
+
+#block_ranking .label_bib
+{
+	display:none;
+}
+
+#block_ranking .label_identity
+{
+	display:none;
+}
+
+#block_ranking .label_nation
+{
+	display:none;
+}
+
+ 
+ 
+ 
+#block_ranking .row1
+{
+	position: absolute;
+	left:0px;
+	top:60px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row2
+{
+	position: absolute;
+	left:0px;
+	top:120px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row3
+{
+	position: absolute;
+	left:0px;
+	top:180px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row4
+{
+	position: absolute;
+	left:0px;
+	top:240px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row5
+{
+	position: absolute;
+	left:0px;
+	top:300px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row6
+{
+	position: absolute;
+	left:0px;
+	top:360px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row7
+{
+	position: absolute;
+	left:0px;
+	top:420px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row8
+{
+	position: absolute;
+	left:0px;
+	top:480px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row9
+{
+	position: absolute;
+	left:0px;
+	top:540px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row10
+{
+	position: absolute;
+	left:0px;
+	top:600px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .bib
+{
+	display:none;
+}
+
+#block_ranking .identity
+{
+	position: absolute;
+
+	left:525px;
+	width:755px;
+	height:62px;
+	top:-4px;
+	font-family: var(--font-ffck);
+	font-size:28pt;
+	font-weight:bold;
+	color:rgb(0,27,90);
+	text-align:left;
+	padding-top:16px;
+}
+
+#block_ranking .rank
+{
+	position: absolute;
+
+	left:460px;
+	width:60px;
+	height:62px;
+	top:2px;
+	font-family: var(--font-ffck);
+	font-size:28pt;
+	color:rgb(0,27,90);
+	font-weight:bold;
+	text-align:center;
+	padding-top:10px;
+}
+
+#block_ranking .img_nation
+{
+	position: absolute;
+	
+	left:1130px;
+	width:80px;
+	height:52px;
+	top:8px;
+	padding-top:16px;
+}
+
+#block_ranking .nation
+{
+	position: absolute;
+
+	left:1050px;
+	width:100px;
+	height:52px;
+	top:5px;
+	color:rgb(0,27,90);
+	font-family: var(--font-ffck);
+	font-size:20pt;
+	text-align:center;
+	padding-top:18px;
+}
+
+#block_ranking .pena
+{
+	position: absolute;
+
+	left:1140px;
+	width:170px;
+	height:60px;
+	top:11px;
+	font-family: var(--font-ffck);
+	font-style:italic;
+	font-size:25pt;
+	color:rgb(0,27,90);
+	text-align:center;
+	padding-top:8px;
+}
+
+#block_ranking .time
+{
+	position: absolute;
+
+	left:1140px;
+	width:240px;
+	height:62px;
+	top:7px;
+	font-family: var(--font-ffck);
+	font-size:28pt;
+	font-style:italic;
+	color:rgb(0,27,90);
+	text-align:right;
+	padding-top:7px;
+}
+
+#block_ranking .label_pena,
+#block_ranking .label_time {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* État initial des lignes */
+#block_ranking [class^="row"] {
+    opacity: 0;
+	display: none;
+    visibility: hidden;
+    transform: translateX(90px); /* droite → gauche */
+    transition:
+        opacity 0.3s ease-out,
+        transform 0.3s ease-out;
+}
+
+/* État quand la ligne devient visible (activé par le JS) */
+#block_ranking [class^="row"].visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Revient à sa position normale */
+}

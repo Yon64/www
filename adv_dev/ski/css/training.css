@@ -1,0 +1,13 @@
+header {
+}
+
+img {
+	display:inline-block;
+	margin: 0 auto;
+}
+
+#title, #sub_title {
+	text-align: right;
+	color:white;
+}
+

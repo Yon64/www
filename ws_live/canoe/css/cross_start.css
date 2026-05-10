@@ -1,0 +1,299 @@
+:root {
+	--font-ffck: 'Calibri', 'Carlito';
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("../font/static/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Montserrat-Bold";
+	src: url("../font/static/Montserrat-Bold.ttf") format("truetype");
+}
+
+
+body {
+	background-color: frey;
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+	font-family: var(--font-ffck);
+}
+
+
+@keyframes apparition {
+	from{
+		opacity: 0;
+		transform: translateY(-1900px);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+#head {
+	position: absolute;
+	background-image: url("../img/Graphic_FFCK/block_start_cross.png");
+	background-repeat: no-repeat;
+
+	left:0px;
+	top:0px;
+	width:1920px;
+	height:1080px;
+
+}
+
+
+#head .place {
+	display: none;
+	position: absolute;
+
+	left: 525px;
+	width: 490px;
+	top: 215px;
+
+	font-family: var(--font-ffck);
+	font-size: 41pt;
+	color: rgb(0, 27, 90);
+
+	font-weight: bold;
+	text-align: left;
+}
+
+
+#head .categ {
+	position: absolute;
+
+	left: 700px;
+	width: 505px;
+	top: 1013px;
+
+	font-family: var(--font-ffck);
+	font-size: 30pt;
+	color: white;
+
+	font-weight: bold;
+	text-align: center;
+}
+
+
+#block_ranking
+{
+	position: absolute;
+
+	left:10px;
+	top:5px;
+	width:100%;
+}	
+
+#block_ranking .row_label
+{
+	display:none;
+}
+
+#block_ranking .label_rank
+{
+	display:none;
+}
+
+#block_ranking .label_bib
+{
+	display:none;
+}
+
+#block_ranking .label_identity
+{
+	display:none;
+}
+
+#block_ranking .label_nation
+{
+	display:none;
+}
+
+#block_ranking .label_pena
+{
+	display:none;
+}
+
+#block_ranking .label_time
+{
+	display:none;
+}
+
+#block_ranking .row1
+{
+	position: absolute;
+	left:37px;
+	top:894px;
+	width:100%;
+	height:60px;
+	
+}
+
+#block_ranking .row2
+{
+	position: absolute;
+	left:500px;
+	top:894px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row3
+{
+	position: absolute;
+	left:961px;
+	top:894px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .row4
+{
+	position: absolute;
+	left:1423px;
+	top:894px;
+	width:100%;
+	height:60px;
+}
+
+#block_ranking .rank {
+	position: absolute;
+
+	left: 0px;
+	width: 45px;
+	height: 62px;
+	top: 7px;
+
+	font-family: var(--font-ffck);
+	font-size: 20pt;
+	color: white;
+
+	font-weight: bold;
+	text-align: right;
+	padding-top: 0px;
+}
+
+
+#block_ranking .bib {
+	position: absolute;
+
+	top: 7px;
+	left: 20px;
+	width: 36px;
+	height: 36px;
+
+	font-family: var(--font-ffck);
+	font-size: 20pt;
+	font-weight: normal;
+	border-radius: 10px;
+
+	text-align: right;
+	padding-top: 0px;
+}
+
+
+#block_ranking .identity {
+	position: absolute;
+	display: flex;
+
+	left: 85px;
+	width: 285px;
+	height: 100px;
+	top: 0px;
+
+	font-family: var(--font-ffck);
+	font-size: 25pt;
+
+	color: rgb(0, 27, 90);
+
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+}
+
+
+#block_ranking .img_nation
+{
+	position: absolute;
+	left:405px;
+	top:65px;
+	padding-top:0px;
+}
+
+
+#block_ranking .pena {
+	position: absolute;
+
+	left: 1100px;
+	width: 50px;
+	height: 62px;
+	top: 20px;
+
+	font-family: var(--font-ffck);
+	font-size: 25pt;
+	font-weight: normal;
+	color: rgb(0, 27, 90);
+
+	text-align: right;
+	padding-top: 0px;
+}
+
+
+#block_ranking .time
+{
+	display: none;
+}
+
+#block_ranking .diff {
+	position: absolute;
+
+	left: 330px;
+	width: 150px;
+	height: 62px;
+	top: 7px;
+
+	font-family: var(--font-ffck);
+	font-size: 22pt;
+	font-weight: bold;
+
+	text-align: right;
+	padding-top: 0px;
+}
+
+
+#block_ranking .yellow
+{
+	color:black;
+	background-image: url("../img/60_140_Y.jpg");
+	background-repeat: repeat-x;
+}
+
+#block_ranking .red
+{
+	color:white;
+	background-image: url("../img/60_140_R.jpg");
+	background-repeat: repeat-x;
+}
+
+#block_ranking .green
+{
+	color:white;
+	background-image: url("../img/60_140_G.jpg");
+	background-repeat: repeat-x;
+}
+
+#block_ranking .empty
+{
+	color:black;
+	background-image: url("../img/60_10_Gray.jpg");
+	background-repeat: repeat-x;
+}
+
+
+
+

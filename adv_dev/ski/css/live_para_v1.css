@@ -1,0 +1,179 @@
+:root {
+	--duel_left_bg_color: #124C90;
+	--duel_right_bg_color: #FF3E4B;
+}
+
+body
+{
+	background-color:white;
+	padding:0px;
+	margin:0px;
+}
+
+#container_title
+{
+	font-family: Calibri;
+	font-size:32px;
+	font-weight:bold;
+	color:white;
+	text-align:center;
+
+	background-color:#024089;
+	background-image: url("../img/logo-ffs.svg");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 64px 64px;
+}
+
+#container_oncourse
+{
+	position:absolute;
+	top:4px;
+	left:4px;
+}
+
+#container_duel div.duel_label
+{
+	position:absolute;
+	border:solid;
+	border-width:1px;
+	background-color:gray;
+	border-color: gray;
+	text-align:center;
+	font-family: Calibri;
+	font-size:24px;
+	color:white;
+} 
+
+#container_duel div.duel
+{
+	position:absolute;
+	border:solid;
+	border-width:1px;
+	background-color:gray;
+	border-color: gray;
+} 
+
+#container_duel div.duel.selection
+{
+	border:solid;
+	border-width:8px;
+	border-color: green yellow;
+}
+
+#container_duel div.duel div.left
+{
+	background-color:var(--duel_left_bg_color);
+	height:50%;
+}
+
+#container_duel div.duel div.right
+{
+	background-color:var(--duel_right_bg_color);
+	height:50%;
+}
+
+#container_duel div.dossard
+{
+	display:inline-block;
+	
+	color:white;
+	text-align:right;
+	vertical-align: top;
+	font-family: Calibri;
+	font-size:24px;
+	font-weight:bold;
+	width:10%;
+}
+
+#container_duel div.identite
+{
+	display:inline-block;
+	
+	color:white;
+	text-align:center;
+	font-family: Calibri;
+	font-size:12px;
+	font-weight:bold;
+	width:75%;
+}
+
+#container_duel div.tps
+{
+	display:inline-block;
+
+	text-align:right;
+	margin-top:5px;
+	vertical-align: top;
+
+	font-family: Calibri;
+	font-size:14px;
+	font-weight:bold;
+	color:white;
+}
+
+#container_duel div.tps.oncourse
+{
+	background-color: black;
+	color:green;
+}
+
+#container_duel div.tps.winner
+{
+	background-color: green;
+	color:white;
+}
+
+#container_duel div.tps.looser
+{
+	background-color: red;
+	color:black;
+}
+
+#container_oncourse div.oncourse 
+{
+	font-family: Calibri;
+	font-size:24px;
+
+	text-align:center;
+	color:green;
+	background-color: black;
+}
+
+#container_oncourse div.oncourse.title
+{
+	background-image: url('../img/16x16_chronometer.png');
+	background-repeat: no-repeat;
+
+	padding-left:24px;
+	background-position: 4px,center;
+}
+
+#label_marquee {
+	padding:0px;
+	background-position: right,center;
+	background-image: url('../img/32x32_megaphone.png');
+	background-repeat: no-repeat;
+}
+
+/* Make it a marquee */
+#marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 5s linear infinite;
+	color: rgb(204, 9, 0);
+	font-weight: bold;
+	font-size:24px;
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}

@@ -1,0 +1,200 @@
+/* Variables globales */
+:root { 
+	--bk-color1:#cc0900;
+	--bk-color2:#003e6d;
+	--header-height:160px;
+	--row-height:18px;
+	--hot-bk_color:#F0C819;
+	--hot-color:black;
+}
+
+body {
+	font-family: Gotham, Arial, sans-serif;
+	margin:0;
+	padding:0;
+}
+
+#header {
+	position:absolute;
+	height:var(--header-height);
+	width: 100%;
+
+	background-image: url('header.png');
+	background-repeat: no-repeat;
+	
+	color:var(--bk-color1);
+	text-align:center;
+	font-weight: bold;
+}
+
+#header h1
+{
+	font-size:42px;
+	margin:0;
+}
+
+#header h2
+{
+	font-size:32px;
+	margin:0;
+}
+
+#header h3
+{
+	font-size:24px;
+	margin:0;
+}
+
+/* marquee */
+#container_marquee {
+	position:absolute;
+	top:120px;
+	left:600px;
+	height:48px;
+	width:76%;
+	margin:0;
+}
+
+#marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#marquee span {
+	display: inline-block;
+    padding-left: 100%;
+    animation: marquee 7s linear infinite;
+	color: var(--bk-color1);
+	font-weight: bold;
+	font-size:24px;
+}
+
+#label_marquee {
+	position:absolute;
+	top:128px;
+	left:550px;
+	height:32px;
+	width:48px;
+	background-image: url('../img/32x32_megaphone.png');
+	background-repeat: no-repeat;
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+#main {
+	position: absolute;
+
+	left:0px;
+	top:var(--header-height);
+	font-size:32px;
+	margin:0;
+	padding:0;
+}
+
+.text-end {
+	text-align: end;
+}
+
+.text-center {
+	text-align:center;
+}
+
+.my_table tr {
+	height:var(--row-height);
+}
+
+.my_table th, .my_table td {
+	padding-left: 4px;
+	padding-right: 4px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+th {
+	background-color: var(--bk-color2);
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+td:first-child, th:first-child {
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+td:last-child, th:last-child {
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.my_table tr td[data-chrono="running"] {
+	background-color: black;
+	background-position: 2px,center;
+	background-image: url('../img/16x16_chronometer.png');
+	background-repeat: no-repeat;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_no_diff"] {
+	background-color: yellow;
+	color:black;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_winner"] {
+	background-color: green;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_loser"] {
+	background-color: red;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_exit"] {
+	background-color: white;
+	transition: background-color 3s linear;
+	color:black;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td.major {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.my_table tr td.minor {
+	font-size: 0.6em;
+}
+
+.my_table tr td.hot {
+	font-weight: bold;
+	font-size: 1.1em;
+	background: radial-gradient(circle, #F0C819, #FFA500);
+	color: black;
+}
+
+#label_ranking th, #label_oncourse th {
+	background-color: var(--bk-color1);
+}

@@ -1,0 +1,28 @@
+table#passage
+{
+  width:640px;
+}
+
+table#passage tr
+{
+	height:120px;
+}
+
+table#passage td
+{
+	text-align:center;
+	color:white;
+	font-size:36px;
+	width:50%;
+}
+
+table#passage td.left
+{
+	background-color:blue;
+}
+
+table#passage td.right
+{
+	background-color: red;
+}
+

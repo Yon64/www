@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>live Saut à Ski</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="../bootstrap/v5.3.3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="./css/live_saut.css?v4" rel="stylesheet">
+		
+		<link rel="shortcut icon" href="./16x16_ffs.png" />
+		<link rel="icon" href="./16x16_ffs.png"/>
+	</head>
+
+	<body>
+		<header id="header" class="page-header">
+			<h3 id="title">&nbsp;</h1>
+			<h4 id="sub_title">&nbsp;</h2>
+		</header>
+
+		<div class="container-fluid">
+			<div class="row" id="row_marquee">
+				<div class="col-1" id="label_marquee">&nbsp;</div>
+				<div class="col-10" id="marquee"><span id="msg">&nbsp;</span></div>
+			</div>
+		</div>
+		<br>
+		
+		<nav id="navigation_epreuve" class="navbar navbar-expand-lg navbar-dark bg-dark" style="display:none" >
+			<div class="container-fluid">
+  				<a class="navbar-brand" href="./live_ski.html">
+					<img src="./img/32x32_ffs.png" alt="" width="32" height="32">
+				</a>
+				
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+						  <a class="nav-link disabled" id="navigation_prev" aria-current="page" href="#" onClick="PrevEpreuve();">&lt;&lt;&nbsp;Previous</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link disabled" id="navigation_next" aria-current="page" href="#" onClick="NextEpreuve();">Next&nbsp;>></a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" aria-current="page" href="#" onClick="ShowEpreuves();">Selection</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#" onClick="ShowPDF();">PDF</a>
+						</li>
+					</ul>
+					<span class="navbar-text">
+						<h4><span id="sel_epreuve">&nbsp;</span>&nbsp;&nbsp;<span id="clock" class="badge bg-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></h4>
+					</span>
+				</div>
+			</div>
+		</nav>
+		<br>
+		<main id="main" class="container-fluid">
+		</main>
+
+	
+		<div class="container" id="container_message">
+		</div>
+		
+		<div class="container">
+			<img id="image">
+		</div>
+		
+		<footer></footer>
+		
+		<script src="../bootstrap/v5.3.3/js/bootstrap.min.js"></script>
+		<script src="../adv/ws.js"></script>
+		<script src="../adv/ws_params.js"></script>
+		<script src="../adv/adv.js"></script>
+		<script src="../adv/ski.js?v2"></script>
+	
+		<script src="./js/live_saut.js?v3"></script>
+		
+		<script>document.addEventListener('DOMContentLoaded', function() {Init();})</script>
+	</body>
+</html>

@@ -1,0 +1,162 @@
+:root {
+	--font-ffck: 'Calibri', 'Carlito';
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("../font/static/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Montserrat-Bold";
+	src: url("../font/static/Montserrat-Bold.ttf") format("truetype");
+}
+
+
+body {
+	overflow: hidden;
+	background-color: frey;
+	padding: 0px;
+	margin: 0px;
+	font-family: var(--font-ffck);
+}
+
+
+@keyframes apparitionG {
+	from{
+		opacity: 0;
+		transform: translateX(-1000px);
+	}
+	to{
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+#head 
+{
+	position: absolute;
+	background-image: url("../img/Graphic_FFCK/block_info.png");
+	background-repeat: no-repeat;
+
+	left:0px;
+	top:0px;
+	width:1920px;
+	height:1080px;
+}
+
+#head .label_title {
+	position: absolute;
+
+	left: 420px;
+	width: 540px;
+	top: 350px;
+
+	font-family: var(--font-ffck);
+	font-size: 35pt;
+	color: white;
+
+	font-weight: bold;
+	text-align: center;
+}
+
+#head .length {
+	position: absolute;
+
+	left: 950px;
+	width: 100px;
+	top: 440px;
+
+	font-family: var(--font-ffck);
+	font-size: 27pt;
+	color: rgb(0, 27, 90);
+
+	font-weight: bold;
+	text-align: right;
+}
+
+#head .upstream {
+	position: absolute;
+
+	left: 950px;
+	width: 100px;
+	top: 522px;
+
+	font-family: var(--font-ffck);
+	font-size: 27pt;
+	color: rgb(0, 27, 90);
+
+	font-weight: bold;
+	text-align: right;
+}
+
+#head .gates {
+	position: absolute;
+
+	left: 950px;
+	width: 100px;
+	top: 615px;
+	font-family: var(--font-ffck);
+	font-size: 27pt;
+	color: rgb(0, 27, 90);
+
+	font-weight: bold;
+	text-align: right;
+}
+
+#head .label_length {
+	position: absolute;
+
+	left: 620px;
+	width: 400px;
+	top: 435px;
+
+	font-family: var(--font-ffck);
+	font-size: 27pt;
+	color: rgb(0, 27, 90);
+
+	font-weight: bold;
+	text-align: left;
+}
+
+#head .label_upstream {
+	position: absolute;
+
+	left: 620px;
+	width: 400px;
+	top: 522px;
+
+	font-family: var(--font-ffck);
+	font-size: 27pt;
+	color: rgb(0, 27, 90);
+
+	font-weight: bold;
+	text-align: left;
+}
+
+#head .label_gates {
+	position: absolute;
+
+	left: 620px;
+	width: 400px;
+	top: 615px;
+
+	font-family: var(--font-ffck);
+	font-size: 27pt;
+	color: rgb(0, 27, 90);
+
+	font-weight: bold;
+	text-align: left;
+}
+
+
+#head .picture
+{
+	position: absolute;
+	background-repeat: no-repeat;
+
+	left:1175px;
+	top:430px;
+	width:230px;
+	height:230px;
+}

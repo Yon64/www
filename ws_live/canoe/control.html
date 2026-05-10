@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Contrôle</title>
+  <link rel="stylesheet" href="css/control.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ========================== -->
+    <!--         EN-TÊTE            -->
+    <!-- ========================== -->
+    <header>
+      <h1>Page de contrôle</h1>
+    </header>
+
+    <!-- ========================== -->
+    <!--   SECTION : AFFICHAGES TV  -->
+    <!-- ========================== -->
+    <section class="block">
+      <h2>Affichages à l’écran</h2>
+      <table class="control-table">
+        <tr>
+            <td><button onclick="show('title')">Titre</button></td>
+            <td><button onclick="show('weather')">Météo</button></td>
+            <td><button onclick="show('data_course')">Données de course</button></td>
+            <td><button onclick="show('time_table')">Programme</button></td>
+            <td><button onclick="show('rank_inrace')">Classement en course</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="hide('title')">Cacher titre</button></td>
+            <td><button onclick="hide('weather')">Cacher météo</button></td>
+            <td><button onclick="hide('data_course')">Cacher données</button></td>
+            <td><button onclick="hide('time_table')">Cacher programme</button></td>
+            <td><button onclick="hide('rank_inrace')">Cacher classement</button></td>
+            
+        </tr>
+      </table>
+    </section>
+
+    <!-- ========================== -->
+    <!--  SECTION : LISTES / CLASSEMENTS -->
+    <!-- ========================== -->
+
+    <section class="block">
+      <h2>Listes et classements</h2>
+
+      <div class="form-group">
+        <label>Catégorie :</label>
+        <select id="startlistCategory">
+          <option value="INV">INV</option>
+          <option value="K1H">K1H</option>
+          <option value="K1D">K1D</option>
+          <option value="C1H">C1H</option>
+          <option value="C1D">C1D</option>
+        </select>
+        <button onclick="showWithCategory('tv_startlist', document.getElementById('startlistCategory').value)">Afficher la liste de départ</button>
+        <button onclick="hide('tv_startlist')">Cacher</button>
+      </div>
+
+      <div class="form-group">
+        <label>Catégorie :</label>
+        <select id="rankingCategory">
+          <option value="INV">INV</option>
+          <option value="K1H">K1H</option>
+          <option value="K1D">K1D</option>
+          <option value="C1H">C1H</option>
+          <option value="C1D">C1D</option>
+        </select>
+        <button onclick="showWithCategory('tv_ranking', document.getElementById('rankingCategory').value)">Afficher le classement</button>
+        <button onclick="hide('tv_ranking')">Cacher</button>
+      </div>
+    </section>
+
+    <!-- ========================== -->
+    <!--   SECTION : ATHLÈTE INDIV  -->
+    <!-- ========================== -->
+    <section class="block">
+      <h2>Athlète individuel</h2>
+      <form onsubmit="sendIndivData(event)">
+        <label>Dossard : <input type="number" id="indivBib" required></label>
+        <label>Couleur :
+          <select id="indivColor">
+            <option value="r">Rouge</option>
+            <option value="b">Bleu</option>
+            <option value="v">Vert</option>
+            <option value="j">Jaune</option>
+            <option value="w">--</option>
+          </select>
+        </label>
+        <button type="submit">Envoyer</button>
+      </form>
+      <div class="button-group">
+        <button onclick="show('indiv')">Afficher</button>
+        <button onclick="hide('indiv')">Cacher</button>
+      </div>
+    </section>
+    <section class="block">
+      <div class="collapsible-header" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('open');">
+        <h2>Gestion du cross</h2>
+        <span class="arrow">▼</span>
+      </div>
+
+      <div class="collapsible-content">
+        <form onsubmit="sendStCrossData(event)">
+          <table class="control-table">
+            <tr>
+              <td><label>Dossard :</label></td>
+              <td><input type="number" id="bib1"></td>
+              <td><input type="number" id="bib2"></td>
+              <td><input type="number" id="bib3"></td>
+              <td><input type="number" id="bib4"></td>
+              <td><select id="phase">
+                <option value="Heat 1">Heat 1</option>
+                <option value="Heat 2">Heat 2</option>
+                <option value="Heat 3">Heat 3</option>
+                <option value="Heat 4">Heat 4</option>
+                <option value="Heat 5">Heat 5</option>
+                <option value="Heat 6">Heat 6</option>
+                <option value="Heat 7">Heat 7</option>
+                <option value="Heat 8">Heat 8</option>
+                <option value="Semi Final 1">Semi Final 1</option>
+                <option value="Semi Final 2">Semi Final 2</option>
+                <option value="Semi Final 3">Semi Final 3</option>
+                <option value="Semi Final 4">Semi Final 4</option>
+                <option value="Quater Final 1">Quater Final 1</option>
+                <option value="Quater Final 2">Quater Final 2</option>
+                <option value="Final">Final</option>
+              </select></td>
+              <td><button onclick="show('cross_start')">Liste de départ cross</button></td>
+            </tr>
+            <tr>
+              <td><label>Couleur :</label></td>
+              <td><select id="color1">
+                <option value="r">Rouge</option>
+                <option value="b">Bleu</option>
+                <option value="v">Vert</option>
+                <option value="j">Jaune</option>
+                <option value="w">--</option>
+              </select></td>
+              <td><select id="color2">
+                <option value="r">Rouge</option>
+                <option value="b">Bleu</option>
+                <option value="v">Vert</option>
+                <option value="j">Jaune</option>
+                <option value="w">--</option>
+              </select></td>
+              <td><select id="color3">
+                <option value="r">Rouge</option>
+                <option value="b">Bleu</option>
+                <option value="v">Vert</option>
+                <option value="j">Jaune</option>
+                <option value="w">--</option>
+              </select></td>
+              <td><select id="color4">
+                <option value="r">Rouge</option>
+                <option value="b">Bleu</option>
+                <option value="v">Vert</option>
+                <option value="j">Jaune</option>
+                <option value="w">--</option>
+              </select></td>
+              <td><select id="epreuve">
+                <option value="INV">INV</option>
+                <option value="K1M">K1M</option>
+                <option value="K1W">K1W</option>
+              </select></td>
+              <td><button onclick="hide('cross_start')">Cacher liste de départ cross</button></td>
+            </tr>
+            <tr>
+              <td><label>Faute :</label></td>
+              <td><select id="faute1">
+                <option value="-">Clear</option>
+                <option value="FLT">FAULT</option>
+                <option value="DSQ">DISQUALIFIED</option>
+              </select></td>
+              <td><select id="faute2">
+                <option value="-">Clear</option>
+                <option value="FLT">FAULT</option>
+                <option value="DSQ">DISQUALIFIED</option>
+              </select></td>
+              <td><select id="faute3">
+                <option value="-">Clear</option>
+                <option value="FLT">FAULT</option>
+                <option value="DSQ">DISQUALIFIED</option>
+              </select></td>
+              <td><select id="faute4">
+                <option value="-">Clear</option>
+                <option value="FLT">FAULT</option>
+                <option value="DSQ">DISQUALIFIED</option>
+              </select></td>
+              <td></td>
+              <td><button onclick="show('cross_rank')">Classement cross</button></td>
+            </tr>
+            <tr>
+              <td><label>Rank :</label></td>
+              <td><select id="rank1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="-">-</option>
+              </select></td>
+              <td><select id="rank2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="-">-</option>
+              </select></td>
+              <td><select id="rank3">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="-">-</option>
+              </select></td>
+              <td><select id="rank4">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="-">-</option>
+              </select></td>
+              <td></td>
+              <td><button onclick="hide('cross_rank')">Cacher classement cross</button></td>
+            </tr>
+          </table>
+          <button type="submit">Envoyer</button>
+          <button onclick="newPoule()">Nouvelle Poule</button>
+        </form>
+      </div>
+    </section>
+    
+
+    <!-- ========================== -->
+    <!--   SECTION : MÉTÉO + PROGRAMME -->
+    <!-- ========================== -->
+    <section class="block collapsible">
+      <div class="collapsible-header" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('open');">
+        <h2>Sections avancées (Météo & Programme)</h2>
+        <span class="arrow">▼</span>
+      </div>
+
+      <div class="collapsible-content">
+        <h3>Modifier les données météo</h3>
+        <form onsubmit="sendWeatherData(event)">
+          <label>Température de l'air : <input type="text" id="airTemp"></label><br>
+          <label>Température de l'eau : <input type="text" id="waterTemp"></label><br>
+          <label>Vitesse du vent : <input type="text" id="windSpeed"></label><br>
+          <label>Icône météo :
+            <select id="weatherIcon">
+              <option value="">-- Choisir une icône --</option>
+              <option value="1">1 - Nuage + Soleil</option>
+              <option value="2">2 - Nuageux</option>
+              <option value="3">3 - Ensoleillé</option>
+              <option value="4">4 - Pluie avec soleil</option>
+              <option value="5">5 - Neige avec pluie</option>
+              <option value="6">6 - Orage avec pluie</option>
+              <option value="7">7 - Neige</option>
+              <option value="8">8 - Pluie</option>
+              <option value="9">9 - Neige avec nuage</option>
+            </select>
+          </label>
+          <input type="file" id="weatherFile" style="display:none" onchange="handleFileSelect(event, 'weatherIcon')">
+          <button type="button" onclick="triggerFileSelect('weatherFile')">📂 Choisir...</button><br>
+          <button type="submit">Envoyer</button>
+        </form>
+
+        
+        <h2>Modifier les données de parcours</h2>
+        <form onsubmit="sendCourseData(event)">
+            <label>Longueur (m): <input type="text" id="courseLength"></label><br>
+            <label>Portes: <input type="number" id="courseGates"></label><br>
+            <label>Amont: <input type="number" id="courseUpstream"></label><br>
+            <label>Image URL: <input type="text" id="courseImage"></label>
+            <input type="file" id="courseFile" style="display:none" onchange="handleFileSelect(event, 'courseImage')">
+            <button type="button" onclick="triggerFileSelect('courseFile')">📂 Choisir...</button><br>
+            <button type="submit">Envoyer</button>
+        </form>
+    
+
+        <h3>Modifier le programme</h3>
+        <form onsubmit="sendTimeTable(event)">
+          <label>Lieu : <input type="text" id="tt_place"></label><br>
+          <label>Titre : <input type="text" id="tt_title"></label><br>
+          <label>Date : <input type="text" id="tt_date"></label><br>
+          <div id="rowsContainer"></div>
+          <button type="button" onclick="addRow()">+ Ajouter une ligne</button><br><br>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================== -->
+  <!--         SCRIPTS            -->
+  <!-- ========================== -->
+  <script src="../adv/ws.js"></script>
+  <script src="../adv/adv.js"></script>
+  <script src="../adv/canoe.js"></script>
+  <script src="../adv/ws_params.js"></script>
+  <script src="js/offline_socket.js"></script>
+  <script src="js/control.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>TV Wather</title>
+
+	<link rel="shortcut icon" href="./16x16_ffck.png" />
+	<link rel="icon" href="./16x16_ffck.png"/>
+	
+	<link href="./css/weather.css" rel="stylesheet">
+</head>
+<body> 
+	<div id ="head">
+		<div class='label_title'>Weather Conditions</div>
+		<div class='label_air_temp'>Air Temperature</div>
+		<div class='label_water_temp'>Water Temperature</div>
+		<div class='label_wind_speed'>Wind Speed</div>
+
+		<div class='air_temp'>16°C</div>
+		<div class='water_temp'>9°C</div>
+		<div class='wind_speed'>5m/s</div>
+		<div class='picture'></div>
+	</div>
+	
+	<script src="../bootstrap-5.0.1/js/bootstrap.min.js"></script>
+	<script src="../adv/ws.js"></script>
+	<script src="../adv/adv.js"></script>
+	<script src="../adv/canoe.js"></script>
+	
+	<script src="../adv/ws_params.js"></script>
+  <script src="js/offline_socket.js"></script>
+	<script>
+		const socket = io();
+
+		socket.on('update_weather_data', (data) => {
+			if (data.air_temp) document.querySelector('.air_temp').textContent = data.air_temp;
+			if (data.water_temp) document.querySelector('.water_temp').textContent = data.water_temp;
+			if (data.wind_speed) document.querySelector('.wind_speed').textContent = data.wind_speed;
+
+			if (data.image) {
+				document.querySelector('.picture').innerHTML = `
+					<img src="${data.image}" alt="Weather" style="max-width: 100%; max-height: 300px;">
+				`;
+			} else {
+				document.querySelector('.picture').innerHTML = '';
+			}
+		});
+	</script>
+	
+	<script>document.addEventListener('DOMContentLoaded', function() {Init();})</script>
+</body>
+</html>

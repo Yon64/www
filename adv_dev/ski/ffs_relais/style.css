@@ -1,0 +1,141 @@
+/* CSS : ffs relais */
+
+/* Variables globales */
+:root { 
+	--bk-color1:#003F8B;
+	--bk-color2:white;
+}
+
+body {
+	min-width:600px;
+	font-family: Gotham, Arial, sans-serif;
+}
+
+#header {
+	min-height:150px;
+	width: 100%;
+	padding-top: 10%; /* Ratio si 16:9 -> (9 / 16 * 100) */
+	background-image: url('header.png');
+	background-size: contain; /* L'image reste entière */
+	background-position: center;
+	background-repeat: no-repeat;
+	
+	color:var(--bk-color2);
+	text-align:center;
+}
+
+#header > div {
+	position: absolute;
+	top:4px;
+	left: 0;
+	width: 100%;
+	border:0;
+}
+
+#header hr {
+	border: 1px solid var(--bk-color1);
+}
+
+.my_table tr td[data-chrono="running"] {
+	background-color: black;
+	background-position: 2px,center;
+	background-image: url('../img/16x16_chronometer.png');
+	background-repeat: no-repeat;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_no_diff"] {
+	background-color: yellow;
+	color:black;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_winner"] {
+	background-color: green;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_loser"] {
+	background-color: red;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td[data-chrono="finish_exit"] {
+	background-color: white;
+	transition: background-color 3s linear;
+	color:black;
+	text-align: right;
+	font-weight: bold;
+}
+
+.my_table tr td.hot {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+#label_start th, #label_oncourse th, #label_finish th, #label_ranking th, .lap th  {
+	background-position: left,center;
+	background-repeat: no-repeat;
+	background: var(--bk-color1);
+	color:white;
+	text-align: center;
+	font-weight: bold;
+}
+
+li a.active {
+    background-color: var(--bk-color1) !important;
+	color: white !important;
+}
+
+li a {
+    color: black !important;
+	font-weight: bold !important;
+}
+
+/* marquee */
+
+#label_marquee {
+	padding:0px;
+	background-position: right,center;
+	background-image: url('../img/32x32_megaphone.png');
+	background-repeat: no-repeat;
+}
+
+/* Make it a marquee */
+#marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 7s linear infinite;
+	color: var(--bk-color2);
+	font-weight: bold;
+	font-size:16px;
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+#clock_container {
+    font-size: 32px;
+    color: var(--bk-color1);
+    background-color: var(--bk-color2);
+    padding: 4px 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}

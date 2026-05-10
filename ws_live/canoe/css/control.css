@@ -1,0 +1,86 @@
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #222;
+  }
+  
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  
+  h1, h2 {
+    color: #004080;
+  }
+  
+  .block {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  label {
+    display: inline-block;
+    margin: 6px 0;
+  }
+  
+  input, select, button {
+    margin: 5px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    cursor: pointer;
+    background: #0078d4;
+    color: white;
+    border: none;
+  }
+  
+  button:hover {
+    background: #005fa3;
+  }
+  
+  /* --- Section repliable --- */
+  .collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0078d4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .collapsible-header:hover {
+    background: #005fa3;
+  }
+  
+  .collapsible-content {
+    display: none;
+    padding-top: 15px;
+  }
+  
+  .collapsible-content.open {
+    display: block;
+  }
+  
+  .arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+  
+  .collapsible-header.active .arrow {
+    transform: rotate(180deg);
+  }
+  
+  .control-table button, .control-table select {
+    width: 95%;
+    height: 100%;
+  }

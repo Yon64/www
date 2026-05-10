@@ -1,0 +1,155 @@
+body
+{
+	min-width:600px;
+}
+
+#header {
+	min-height: 32px;
+	background: rgb(53, 51, 51);
+	color:white;
+	text-align: center;
+	font-weight: bold;
+}
+
+#clock
+{
+	background:rgb(53, 51, 51);
+	padding-left:8px;
+	padding-right:8px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}	
+
+canvas
+{
+  border: 1px solid red ;
+}
+
+/* choices multi-select */
+.choices__inner {
+  border-radius: 0px;
+}
+.choices__list--multiple .choices__item {
+  background-color: #0071BC;
+  border: 1px solid #0071BC;
+  border-radius: 0px;
+}
+
+#row_marquee2 {
+  overflow: hidden;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  display: flex;
+}
+
+#label_marquee {
+	padding:0px;
+	background-position: right,center;
+	background-image: url('../img/32x32_megaphone.png');
+	background-repeat: no-repeat;
+}
+
+/* Make it a marquee */
+#marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 7s linear infinite;
+	color: rgb(204, 9, 0);
+	font-weight: bold;
+	font-size:24px;
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+tr {
+	background-color:orange;
+	color:green;
+}
+
+tr td[data-chrono="running"] {
+	background-color: black;
+	background-position: 2px,center;
+	background-image: url('../img/16x16_chronometer.png');
+	background-repeat: no-repeat;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+/*
+tr td[data-chrono="finish_no_diffxxxxxxxxx"] {
+	background-position: 4px,center;
+	background-image: url('../img/16x16_ranking.png');
+	background-repeat: no-repeat;
+}
+*/
+
+tr td[data-chrono="finish_no_diff"] {
+	background-color: yellow;
+	color:black;
+	text-align: right;
+	font-weight: bold;
+}
+
+tr td[data-chrono="finish_winner"] {
+	background-color: green;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+tr td[data-chrono="finish_loser"] {
+	background-color: red;
+	color:white;
+	text-align: right;
+	font-weight: bold;
+}
+
+tr td[data-chrono="finish_exit"] {
+	background-color: white;
+	transition: background-color 3s linear;
+	color:black;
+	text-align: right;
+	font-weight: bold;
+}
+
+tr td.rank_chrono_main {
+	text-align: right;
+	font-weight: bold;
+}
+
+tr td.identity	{
+	text-align: left;
+	font-weight: bold;
+}
+
+#label_start th, #label_oncourse th, #label_finish th, #label_ranking th {
+	background-image: url('../img/16x16_depart.png');
+	background-position: left,center;
+	background-repeat: no-repeat;
+	background: rgb(204, 9, 0);
+	color:white;
+	text-align: center;
+	font-weight: bold;
+}
+
+li a.active {
+    background-color: rgb(204, 9, 0) !important;
+	color: white !important;
+}
+
+li a {
+    color: black !important;
+	font-weight: bold !important;
+}
