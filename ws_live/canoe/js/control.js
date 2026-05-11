@@ -142,10 +142,18 @@ function handleFileSelect(event, targetId) {
             socket.emit('update_course_data', data);
         }
         socket.on('update_course_data', (data) => {
-            if (data.length) document.getElementById('courseLength').value = data.length;
-            if (data.gates) document.getElementById('courseGates').value = data.gates;
-            if (data.upstream) document.getElementById('courseUpstream').value = data.upstream;
-            if (data.image) document.getElementById('courseImage').value = data.image;
+            const fields = {
+                'courseLength': data.length,
+                'courseGates': data.gates,
+                'courseUpstream': data.upstream,
+                'courseImage': data.image
+            };
+            for (const id in fields) {
+                const el = document.getElementById(id);
+                if (el && el !== document.activeElement && fields[id] !== undefined) {
+                    el.value = fields[id];
+                }
+            }
         });
 
         function sendWeatherData(e) {
@@ -169,13 +177,24 @@ function handleFileSelect(event, targetId) {
         }
 
         socket.on('update_weather_data', (data) => {
-            if (data.air_temp) document.getElementById('airTemp').value = data.air_temp;
-            if (data.water_temp) document.getElementById('waterTemp').value = data.water_temp;
-            if (data.wind_speed) document.getElementById('windSpeed').value = data.wind_speed;
+            const fields = {
+                'airTemp': data.air_temp,
+                'waterTemp': data.water_temp,
+                'windSpeed': data.wind_speed
+            };
+            for (const id in fields) {
+                const el = document.getElementById(id);
+                if (el && el !== document.activeElement && fields[id] !== undefined) {
+                    el.value = fields[id];
+                }
+            }
             
             if (data.image) {
+                const el = document.getElementById('weatherIcon');
                 const match = data.image.match(/(\d+)\.png$/);
-                if (match) document.getElementById('weatherIcon').value = match[1];
+                if (el && el !== document.activeElement && match) {
+                    el.value = match[1];
+                }
             }
         });
 

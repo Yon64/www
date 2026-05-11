@@ -1,3 +1,4 @@
+const socket = io();
 function OnOpenWebSocketCommand()
 {
 	wsMain.websocket.send(JSON.stringify({key:'<race_load>', key_race:'*' }));
@@ -139,17 +140,27 @@ function ShowRanking(tRanking) {
         i++;
     }
 
+    // Clear previous timeouts to avoid overlapping animations
+    if (wsMain.timeouts) {
+        wsMain.timeouts.forEach(clearTimeout);
+    }
+    wsMain.timeouts = [];
+
     // 2️ Affichage progressif avec l'animation CSS
     rowsToShow.forEach((rankingIndex, idx) => {
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             ShowRankingRow(idx + 1, tRanking, rankingIndex, course_phase);
-        }, idx * 200); // Décale l'apparition de chaque ligne en ms
+        }, idx * 200);
+        wsMain.timeouts.push(timeoutId);
     });
 
     // 3️ Calcul du total pour savoir s'il faut arrêter la boucle
     const totalInCat = GetCountRanking(tRanking, course_phase, 0);
 	const totalPages = Math.ceil(totalInCat / 10);
-    const currentPage = Math.floor(wsMain.scroll_start / 10) + 1;
+    
+    // Calculate current item index relative to category
+    const startInCat = GetCountRanking(tRanking, course_phase, 0, wsMain.scroll_start);
+    const currentPage = Math.floor(startInCat / 10) + 1;
 
     const counterEl = document.querySelector(".page_counter");
     if (counterEl) {
@@ -172,27 +183,29 @@ function ShowRanking(tRanking) {
     const nextScrollStart = GetCountRanking(tRanking, course_phase, i) > 0 ? i : 0;
 
 	// 6️ Relance le cycle après le délai
-setTimeout(() => {
-    HideRowsProgressively(() => {
-        
-     // On détermine les durée de pause (2s pour redémarrer au début, 0,5s entre 2 pages)
-        let pauseDuration = (nextScrollStart === 0) ? 3000 : 500;
-
-        setTimeout(() => {
-            wsMain.scroll_start = nextScrollStart;
-            const newRanking = canoe.GetTableRanking();
-            ShowRanking(newRanking);
-        }, pauseDuration); 
-
-    });
-}, wsMain.scroll_delay);
+    const cycleId = setTimeout(() => {
+        HideRowsProgressively(() => {
+            
+         // On détermine les durée de pause (2s pour redémarrer au début, 0,5s entre 2 pages)
+            let pauseDuration = (nextScrollStart === 0) ? 3000 : 500;
+    
+            const innerTimeoutId = setTimeout(() => {
+                wsMain.scroll_start = nextScrollStart;
+                const newRanking = canoe.GetTableRanking();
+                ShowRanking(newRanking);
+            }, pauseDuration); 
+            wsMain.timeouts.push(innerTimeoutId);
+        });
+    }, wsMain.scroll_delay);
+    wsMain.timeouts.push(cycleId);
 }
 
 // Mise à jour de GetCountRanking pour éviter l'erreur d'index (i < NbRows)
-function GetCountRanking(tRanking, course_phase, iStart) 
+function GetCountRanking(tRanking, course_phase, iStart, iEnd = -1) 
 {
+    if (iEnd === -1) iEnd = tRanking.GetNbRows();
     let count = 0;
-	for (let i = iStart; i < tRanking.GetNbRows(); i++)
+	for (let i = iStart; i < iEnd; i++)
 	{
         if (tRanking.GetCell('Code_categorie', i) == wsMain.epreuve && 
             tRanking.GetCellInt('Heure_depart' + course_phase, i) > 0)
@@ -292,6 +305,17 @@ function Init()
 	wsMain.mapCommand.set('<epreuve_load>', OnCommandEpreuveLoad);
 	wsMain.mapCommand.set('<order>', OnCommandOrder);
 	
+	// Reset scroll when shown
+	socket.on('show_graphic', (payload) => {
+		const type = typeof payload === 'string' ? payload : payload.type;
+		if (type === 'tv_startlist') {
+			wsMain.scroll_start = 0;
+			// If we already have data, re-render immediately
+			const tRanking = canoe.GetTableRanking();
+			if (tRanking) ShowRanking(tRanking);
+		}
+	});
+
 	// Ouverture ws 
 	wsMain.OpenWebSocketCommand(OnOpenWebSocketCommand);
 }

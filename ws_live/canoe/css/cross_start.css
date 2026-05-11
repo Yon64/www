@@ -179,6 +179,7 @@ body {
 
 
 #block_ranking .bib {
+	display: block;
 	position: absolute;
 
 	top: 7px;

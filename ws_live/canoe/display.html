@@ -100,7 +100,10 @@
 
       for (const id in iframes) {
         if (id === type) {
-          iframes[id].src = url;
+          // Prevent redundant reloads if the URL is the same
+          if (!iframes[id].src.endsWith(url)) {
+            iframes[id].src = url;
+          }
           iframes[id].classList.add('visible');
         } else {
           iframes[id].classList.remove('visible');

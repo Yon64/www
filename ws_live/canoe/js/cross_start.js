@@ -75,7 +75,7 @@ function HideRows()
 function ShowRankingRow(row, tRanking, i, course_phase, color)
 {
 	const bibEl = document.querySelector('#block_ranking .row'+row+' .bib');
-	bibEl.innerHTML = tRanking.GetCell('Dossard', i);
+	//bibEl.innerHTML = tRanking.GetCell('Dossard', i);
 	
 	// Map colors
 	const colorMap = { 'r': 'red', 'b': 'blue', 'v': 'green', 'j': 'yellow' };

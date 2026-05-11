@@ -11,25 +11,31 @@
 </head>
 <body> 
 	<div id ="head">
+		<!-- Logos et Pictogrammes -->
+		<div class="logoFFCK"></div>
+		<div class="logo1"></div>
+		<div class="logo2"></div>
+		<div class="picto"></div>
+
 		<div class='place'>Place</div>
 		<div class='title'>Title</div>
 		
 		<div class="date">05/03/2025</div>
-		<div class="page"></div>
+		<div class="page_counter"></div>
 	</div>
 	
 	<div id="block_ranking">
 		<div class="row_label">
-			<div class="label_bib">Bib</div>
-			<div class="label_identity">Name</div>
-			<div class="label_nation">Nation</div>
-			<div class="label_time">S.Time</div>
+			<div class="label_time">Time</div>
+			<div class="label_phase">Phase</div>
+			<div class="label_categ">Category</div>
+			<div class="label_status">Status</div>
 		</div>
 
-		<div class="row1" ><div class="etat"></div><div class="time">19:30:00</div><div class="phase">FINAL</div><div class="categ">C1W</div></div>
-		<div class="row2" ><div class="etat"></div><div class="time">20:00:00</div><div class="phase">FINAL</div><div class="categ">C1M</div></div>
-		<div class="row3" ><div class="etat"></div><div class="time">20:30:00</div><div class="phase">FINAL</div><div class="categ">K1W</div></div>
-		<div class="row4" ><div class="etat"></div><div class="time">21:00:00</div><div class="phase">FINAL</div><div class="categ">K1M</div></div>
+		<div class="row1" ><div class="etat"></div><div class="time"></div><div class="phase"></div><div class="categ"></div></div>
+		<div class="row2" ><div class="etat"></div><div class="time"></div><div class="phase"></div><div class="categ"></div></div>
+		<div class="row3" ><div class="etat"></div><div class="time"></div><div class="phase"></div><div class="categ"></div></div>
+		<div class="row4" ><div class="etat"></div><div class="time"></div><div class="phase"></div><div class="categ"></div></div>
 		<div class="row5" ><div class="etat"></div><div class="time"></div><div class="phase"></div><div class="categ"></div></div>
 		<div class="row6" ><div class="etat"></div><div class="time"></div><div class="phase"></div><div class="categ"></div></div>
 		<div class="row7" ><div class="etat"></div><div class="time"></div><div class="phase"></div><div class="categ"></div></div>
@@ -44,51 +50,8 @@
 	<script src="../adv/canoe.js"></script>
 	
 	<script src="../adv/ws_params.js"></script>
-  <script src="js/offline_socket.js"></script>
-	<script>
-		const socket = io();
-
-		socket.on('update_time_table', (data) => {
-	if (data.title) document.querySelector('.title').textContent = data.title;
-	if (data.place) document.querySelector('.place').textContent = data.place;
-	if (data.date) document.querySelector('.date').textContent = data.date;
-
-	// Clear existing content
-	for (let i = 1; i <= 10; i++) {
-		document.querySelector(`.row${i} .time`).textContent = '';
-		document.querySelector(`.row${i} .phase`).textContent = '';
-		document.querySelector(`.row${i} .categ`).textContent = '';
-		document.querySelector(`.row${i} .etat`).textContent = '';
-		document.querySelector(`.row${i} .etat`).style.backgroundColor = '';
-	}
-
-	if (Array.isArray(data.rows)) {
-		data.rows.slice(0, 10).forEach((rowData, idx) => {
-			const i = idx + 1;
-			document.querySelector(`.row${i} .time`).textContent = rowData.time || '';
-			document.querySelector(`.row${i} .phase`).textContent = rowData.phase || '';
-			document.querySelector(`.row${i} .categ`).textContent = rowData.categ || '';
-
-			// Gestion de l'état
-			const state = parseFloat(rowData.state);
-			const etatEl = document.querySelector(`.row${i} .etat`);
-			if (state === 2) {
-				etatEl.textContent = 'OFFICIAL';
-				etatEl.style.backgroundColor = 'grey';
-			} else if (state === 1) {
-				etatEl.textContent = 'LIVE';
-				etatEl.style.backgroundColor = 'rgb(212,0,0)';
-			} else if (state === 0) {
-				etatEl.textContent = 'SCHEDULED';
-				etatEl.style.backgroundColor = 'rgb(254,219,0)';
-			} else {
-				etatEl.textContent = '';
-				etatEl.style.backgroundColor = '';
-			}
-		});
-	}
-});
-	</script>
+	<script src="js/offline_socket.js"></script>
+	<script src="js/time_table.js"></script>
 	
 	<script>document.addEventListener('DOMContentLoaded', function() {Init();})</script>
 </body>
