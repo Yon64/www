@@ -25,11 +25,11 @@ body {
 @keyframes apparition {
 	from{
 		opacity: 0;
-		transform: translateY(-1900px);
+		transform: translateX(-1900px);
 	}
 	to{
 		opacity: 1;
-		transform: translateY(0px);
+		transform: translateX(0px);
 	}
 }
 
@@ -39,7 +39,7 @@ body {
 	background-repeat: no-repeat;
 
 	left:0px;
-	top:0px;
+	top:600px;
 	width:1920px;
 	height:1080px;
 
@@ -101,7 +101,7 @@ body {
 	position: absolute;
 
 	left: 10px;
-	top: 5px;
+	top: 605px;
 	width: 100%;
 	font-family: var(--font-ffck);
 }

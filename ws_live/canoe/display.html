@@ -64,6 +64,20 @@
       left: 0;
     }
 
+    .gauche {
+      width: 2000px;
+      height: 1200px;
+      border: none;
+      background: transparent;
+      opacity: 1;
+      transform: translateX(-4000px); 
+      transition: transform 2s ease;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
     iframe.visible {
       opacity: 1;
       transform: translateY(0); 
@@ -78,8 +92,8 @@
   <iframe id="cross_rank" class="droite" src="cross_rank.html" allowtransparency="true"></iframe>
   <iframe id="cross_start" class="bas" src="cross_start.html" allowtransparency="true"></iframe>
   <iframe id="data_course" class="haut" src="data_course.html" allowtransparency="true"></iframe>
-  <iframe id="indiv" class="bas" src="indiv.html" allowtransparency="true"></iframe>
-  <iframe id="rank_inrace" class="haut" src="rank_inrace.html" allowtransparency="true"></iframe>
+  <iframe id="indiv" class="gauche" src="indiv.html" allowtransparency="true"></iframe>
+  <iframe id="rank_inrace" class="gauche" src="rank_inrace.html" allowtransparency="true"></iframe>
   <iframe id="time_table" class="haut" src="time_table.html" allowtransparency="true"></iframe>
   <iframe id="title" class="haut" src="title.html" allowtransparency="true"></iframe>
 
