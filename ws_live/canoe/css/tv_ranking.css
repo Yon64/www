@@ -130,14 +130,14 @@ body::after {
 }
 
 #head .picto {
-    width: 100%;
+    width: 90px;
     height: 90px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: left;
     position: absolute;
     top: 836px;
-	right: 810px;
+	left: 1110px;
 }
 #head .picto.sla {
     background-image: url("../img/FFCK_Icon_Slalom.png");
