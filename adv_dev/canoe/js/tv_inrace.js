@@ -914,9 +914,9 @@ const myContext = {
 
 	fmtChrono: '',			// Format de Temps
 
-	timeoutFinishDelay: 100000,	// Affichage en ms du laps de temps à l'arrivée
+	timeoutFinishDelay: 10000,	// Affichage en ms du laps de temps à l'arrivée
 	timeoutInterDelay: 5000,		// Affichage en ms du laps de temps à l'inter
-	timeoutStartDelay: 99999999999999,		// Affichage en ms du laps de temps au départ
+	timeoutStartDelay: 9999999999999,		// Affichage en ms du laps de temps au départ
 
 	timeoutFinish: null,
 	timeoutInter: null,

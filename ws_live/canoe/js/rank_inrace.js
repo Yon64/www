@@ -42,7 +42,13 @@ function OnCommandEpreuveLoad(objJSON)
 
 function OnBroadcastPenaltyAdd(objJSON) 
 {
-	// Logique de rafraîchissement si nécessaire
+	Reload();
+}
+
+function Reload()
+{
+	const cmd = { key : '<epreuve_load>',  epreuve : wsMain.epreuve };	
+	wsMain.websocket.send(JSON.stringify(cmd));
 }
 
 function SetCurrentEpreuve(tRanking)
@@ -177,7 +183,21 @@ function Init()
 
 	// Ouverture ws 
 	wsMain.OpenWebSocketCommand(OnOpenWebSocketCommand);
+
+	// Socket.io for UI events
+	if (typeof socket !== 'undefined') {
+		socket.on('show_graphic', (payload) => {
+			const type = typeof payload === 'string' ? payload : payload.type;
+			if (type === 'rank_inrace') {
+				Reload();
+			}
+		});
+	}
+
+	// Periodic Refresh
+	setInterval(Reload, 10000);
 }
 
 ////////// Variables globales et Initialisation  //////////
 const wsMain = new ws.Context(wsParams.url, wsParams.port);
+const socket = io();
