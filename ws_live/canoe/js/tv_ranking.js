@@ -36,6 +36,12 @@ function OnCommandEpreuveLoad(objJSON)
     const course_phase = canoe.GetCodeCoursePhase();
     tRanking.OrderBy('Tps'+course_phase+', Dossard');
 
+    // Silent reload : mise à jour des données en fond sans toucher à l'affichage
+    if (wsMain.silentReload) {
+        wsMain.silentReload = false;
+        return;
+    }
+
     if (wsMain.epreuve == '')
         SetCurrentEpreuve(tRanking);
 
@@ -300,6 +306,20 @@ function TruncateName(name)
 ////////// Variables globales et Initialisation  //////////
 const wsMain = new ws.Context(wsParams.url, wsParams.port);
 
+function Reload(silent = false)
+{
+	if (wsMain.websocket && wsMain.websocket.readyState === WebSocket.OPEN) {
+		wsMain.silentReload = silent;
+		wsMain.websocket.send(JSON.stringify({key:'<race_load>', key_race:'*' }));
+	}
+}
+
+function OnBroadcastUpdate(objJSON)
+{
+	// Mise à jour silencieuse : ne pas interrompre le cycle de pagination
+	Reload(true);
+}
+
 function HideRowsProgressively(callback)
 {
 	let idx = 10;  // dernière ligne a commencer a masquer //
@@ -352,17 +372,21 @@ function Init()
 	wsMain.mapCommand.set('<race_load>', OnCommandRaceLoad);
 	wsMain.mapCommand.set('<epreuve_load>', OnCommandEpreuveLoad);
 	wsMain.mapCommand.set('<order>', OnCommandOrder);
+	wsMain.mapCommand.set('<penalty_add>', OnBroadcastUpdate);
+	wsMain.mapCommand.set('<bib_time>', OnBroadcastUpdate);
 	
-	// Reset scroll when shown
+	// Rechargement complet à l'affichage (repart de la page 1)
 	socket.on('show_graphic', (payload) => {
 		const type = typeof payload === 'string' ? payload : payload.type;
 		if (type === 'tv_ranking') {
 			wsMain.scroll_start = 0;
-			// If we already have data, re-render immediately
-			const tRanking = canoe.GetTableRanking();
-			if (tRanking) ShowRanking(tRanking);
+			wsMain.silentReload = false;
+			Reload();
 		}
 	});
+
+	// Rafraîchissement périodique silencieux (données à jour sans reset du cycle)
+	setInterval(() => Reload(true), 10000);
 
 	// Ouverture ws 
 	wsMain.OpenWebSocketCommand(OnOpenWebSocketCommand);
