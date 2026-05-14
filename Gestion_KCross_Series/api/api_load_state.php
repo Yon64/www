@@ -72,13 +72,15 @@ function loadFullCompetitionState($pdo, $competitionCode, $tableSettings, $table
     $schedulesDataJson = $stmtSchedules->fetchColumn();
     $allRows = _fetchFullCategoryData($pdo, $competitionCode, $tableCategories, $tableHeats, $tableSlots);
     $categoriesData = _buildCategoriesDataFromRows($allRows);
+    global $config;
     return [
         'success' => true,
         'found' => true,
         'data' => [
             'settings' => $settings,
             'schedulesData' => json_decode($schedulesDataJson, true),
-            'categoriesData' => $categoriesData
+            'categoriesData' => $categoriesData,
+             'liveWebConfig' => $config['live_web'] ?? null 
         ]
     ];
 }

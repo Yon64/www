@@ -17,5 +17,11 @@ return [
     'judging' => [
         'juge_start' => true, 
     ],
+    'live_web' => [
+        'fonction_live_enabled' => true, 
+        'mode' => 'Live', 
+        'server_url' => 'https://livecompet.ffck.org/live_kcross/',
+        'secret_key' => 'Gestion_KCROSS_2026_SV!' 
+    ],
 ];
 ?>

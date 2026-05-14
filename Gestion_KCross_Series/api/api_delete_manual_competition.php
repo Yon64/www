@@ -8,7 +8,7 @@ if (empty($competitionCodeWithPrefix)) {
     echo json_encode(['success' => false, 'message' => "ID de compétition invalide."]);    
     exit;
 }
-$competitionCodeNumeric = (int) str_replace('M', '', $competitionCodeWithPrefix);
+$competitionCodeNumeric = (int) preg_replace('/[^0-9]/', '', $competitionCodeWithPrefix);
 try {
     $pdo->beginTransaction();
     $pdo->prepare("DELETE FROM {$tableSlots} WHERE Code_competition = ?")->execute([$competitionCodeWithPrefix]);

@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/_bootstrap.php';
 $competitionCodeWithPrefix = $_GET['competition'] ?? '';
-$isManual = (strpos($competitionCodeWithPrefix, 'M') === 0);
+$isManual = (preg_match('/^[MI]/', $competitionCodeWithPrefix) === 1);
 $competitionCodeForKCrossTables = $competitionCodeWithPrefix; 
-$competitionCodeForSourceTables = (int) str_replace('M', '', $competitionCodeWithPrefix); 
+$competitionCodeForSourceTables = (int) preg_replace('/[^0-9]/', '', $competitionCodeWithPrefix);
 $categoryKey = $_GET['category'] ?? '';
 $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 0;
 $etat_param = $_GET['etat'] ?? '2';

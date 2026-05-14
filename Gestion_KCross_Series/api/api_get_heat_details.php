@@ -7,9 +7,9 @@ if ($competitionCodeWithPrefix === '' || $heatId === 0) {
     echo json_encode(['success' => false, 'message' => 'Paramètres manquants.']);
     exit;
 }
-$isManual = (strpos($competitionCodeWithPrefix, 'M') === 0);
+$isManual = (preg_match('/^[MI]/', $competitionCodeWithPrefix) === 1);
 $competitionCodeForKCrossTables = $competitionCodeWithPrefix; 
-$competitionCodeForSourceTables = (int) str_replace('M', '', $competitionCodeWithPrefix); 
+$competitionCodeForSourceTables = (int) preg_replace('/[^0-9]/', '', $competitionCodeWithPrefix);
 $withclub = true; 
 try {
     $join_sql = "";

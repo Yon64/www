@@ -137,7 +137,8 @@ try {
 }
 function saveFullConfiguration($pdo, $payload, $competitionCode, $tableSettings, $tableCategories, $tableSchedules, $tableHeats, $tableSlots,$tableRanking, $auditLogger) {
     $nombrePortes = (int)($payload['gateCount'] ?? 8);
-    $nombreZones = $nombrePortes + 2;
+    $hasRollZone = isset($payload['rollZoneAfterGate']) && (int)$payload['rollZoneAfterGate'] !== -1;
+    $nombreZones = $nombrePortes + ($hasRollZone ? 2 : 1);
     $zonesJugeesInitial = str_repeat('0', $nombreZones);
     $stmt = $pdo->prepare("DELETE FROM {$tableSlots} WHERE Code_competition = ?");
     $stmt->execute([$competitionCode]);
@@ -864,8 +865,9 @@ function forceValidateHeat($pdo, $payload, $competitionCode, $tableHeats, $table
         $stmtSettings = $pdo->prepare("SELECT Nombre_portes FROM {$tableSettings} WHERE Code_competition = ?");
         $stmtSettings->execute([$competitionCode]);
         $result = $stmtSettings->fetchColumn();
-        $nombrePortes = ($result !== false) ? (int)$result : 8;
-        $nombreZones = $nombrePortes + 2;
+        $nombrePortes = ($settingsRow && $settingsRow['Nombre_portes'] !== null) ? (int)$settingsRow['Nombre_portes'] : 8;
+        $hasRollZone = ($settingsRow && (int)$settingsRow['Roll_Zone'] !== -1);
+        $nombreZones = $nombrePortes + ($hasRollZone ? 2 : 1);
         $currentZonesJugees = str_repeat('0', $nombreZones);
     }
     $zonesJugeesFinal = str_replace('0', '2', $currentZonesJugees);

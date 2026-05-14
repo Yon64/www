@@ -14,8 +14,8 @@ if (empty($competitionCodeWithPrefix)) {
     echo json_encode(['success' => false, 'message' => "Code de compétition non fourni."]);
     exit;
 }
-$isManual = (strpos($competitionCodeWithPrefix, 'M') === 0);
-$code_competition = (int) str_replace('M', '', $competitionCodeWithPrefix);
+$isManual = (preg_match('/^[MI]/', $competitionCodeWithPrefix) === 1);
+$code_competition = (int) preg_replace('/[^0-9]/', '', $competitionCodeWithPrefix);
 $response = ['success' => false];
 if ($code_competition === 0) {
     $response['message'] = "Code de compétition non fourni.";
